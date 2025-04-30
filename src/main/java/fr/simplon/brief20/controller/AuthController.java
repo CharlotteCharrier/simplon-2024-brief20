@@ -26,6 +26,21 @@ public class AuthController {
         return "pages/login";
     }
 
+    @PostMapping("/login")
+    public String login(@ModelAttribute("user") User user, Model model) {
+        userService.findByUsername(user.getUsername());
+        if (user.getPassword().equals(passwordEncoder.encode(user.getPassword()))) {
+            model.addAttribute("user", user);
+        }
+        return "<h1>You are logged</h1>";
+    }
+
+    @GetMapping("/logged")
+    public String getLoggedPage(Model model) {
+        model.addAttribute("user", User.builder().build());
+        return "pages/logged";
+    }
+
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", User.builder().build());

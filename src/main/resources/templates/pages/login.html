@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-</head>
-<body>
-    <header th:replace="components/navbar :: navbar"></header>
     <main>
         <h1>Login</h1>
-        <form th:action="@{/login}" method="post">
+        <form hx-post="/login" hx-swap="outerHTML" hx-target="main" th:object="${user}">
             <label>Username: <input type="text" name="username" required/></label><br/>
             <label>Password: <input type="password" name="password" required/></label><br/>
             <button type="submit">Login</button>
@@ -21,6 +12,3 @@
             <p>Logged out successfully.</p>
         </div>
     </main>
-    <footer th:replace="components/footer :: footer"></footer>
-</body>
-</html>

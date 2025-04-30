@@ -2,10 +2,14 @@ spring:
   application:
     name: brief20
   datasource:
-    url: jdbc:postgresql://localhost:5432/app
-    username: app
-    password: app
+    url: jdbc:postgresql://localhost:5435/brief20ecoconception
+    username: postgres
+    password: postgres
   jpa:
     database: postgresql
     hibernate:
       ddl-auto: update
+debug: true
+logging:
+  level:
+    org.springframework: DEBUG
